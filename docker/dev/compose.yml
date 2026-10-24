@@ -1,0 +1,29 @@
+name: franceschini-email-dev
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: franceschini-email-db-dev
+    restart: always
+    environment:
+      - POSTGRES_USER=usesend
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=usesend
+    volumes:
+      - database:/var/lib/postgresql/data
+    ports:
+      - "54320:5432"
+
+  local-sen-sns:
+    image: usesend/local-ses-sns:latest
+    container_name: franceschini-email-local-ses-sns
+    restart: always
+    ports:
+      - "5350:3000"
+    environment:
+      WEBHOOK_URL: http://host.docker.internal:3000/api/ses_callback
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  database:

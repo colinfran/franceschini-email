@@ -1,0 +1,3 @@
+{
+  "extends": "@usesend/typescript-config/base.json"
+}

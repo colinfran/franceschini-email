@@ -1,0 +1,72 @@
+---
+title: Introduction
+description: "Guides and API reference for your Franceschini Email installation."
+icon: rocket
+---
+
+## Setting up
+
+Franceschini Email is a private transactional email dashboard built on useSend. Sign in with your authorized GitHub account to manage emails, domains, API keys, suppressions, and webhooks. Public signup and waitlists are not used.
+
+The API base URL is `https://franceschini.email/api`. These guides retain the upstream SDK package names and API headers for compatibility; configure SDKs to use `https://franceschini.email` instead of the hosted useSend service.
+
+PostgreSQL stores application data and background jobs. Templates, the visual
+editor, and image uploads have been removed, so MinIO/S3 storage is not required.
+Supply a subject and HTML or text directly when sending, including batch sends.
+Unknown request fields, including the retired `templateId` and `variables`,
+are rejected. Inline base64 attachments remain supported without object storage.
+
+Contacts, contact books, campaigns, subscription confirmation, and campaign
+unsubscribe pages and APIs are not available in this installation. Existing
+database records are retained for history; no campaign, contact-import, or
+marketing-send workers run. Transactional batch sending and scheduled emails
+remain supported, and the configured SES send rate is used entirely for
+transactional delivery.
+
+Quicklinks to get started:
+
+<CardGroup col={2}>
+  <Card
+    title="Add domain"
+    icon="globe"
+    href="/domains"
+  >
+  Add domains to send emails
+  </Card>
+
+  <Card
+    title="Create API key"
+    icon="key"
+    href="/dev-settings/api-keys"
+  >
+    Generate API key to send emails from your app.
+  </Card>
+  <Card
+    title="Try our API"
+    icon="code"
+    href="/api-reference/introduction"
+  >
+    Learn how to use our API to send emails programmatically.
+  </Card>
+  <Card
+    title="NodeJS"
+    icon="node-js"
+    href="/get-started/nodejs"
+  >
+    Learn how to use our SDK using NodeJS to send emails programmatically.
+  </Card>
+  <Card
+    title="Python"
+    icon="python"
+    href="/get-started/python"
+  >
+    Learn how to use our SDK using Python to send emails programmatically.
+  </Card>
+    <Card
+    title="SMTP support"
+    icon="envelope"
+    href="/get-started/smtp"
+  >
+    Send emails with SMTP server instead of REST API.
+  </Card>
+</CardGroup>
