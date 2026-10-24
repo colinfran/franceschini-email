@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import { JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@usesend/ui";
 import { Toaster } from "@usesend/ui/src/toaster";
+import { FranceschiniAnalytics } from "@colinfran/analytics";
+
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { Metadata } from "next";
@@ -38,6 +40,7 @@ export default async function RootLayout({
           <Toaster />
           <TRPCReactProvider>{children}</TRPCReactProvider>
         </ThemeProvider>
+        <FranceschiniAnalytics websiteId="web_dYowBBrWVc3NO8hhA2ZD"/>
       </body>
     </html>
   );
